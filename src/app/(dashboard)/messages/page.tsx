@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
@@ -28,7 +28,7 @@ type Message = {
   createdAt: string;
 };
 
-export default function MessagesPage() {
+function MessagesContent() {
   const { data: session } = useSession();
   const searchParams = useSearchParams();
   const selectedUserId = searchParams.get("userId");
@@ -474,5 +474,13 @@ export default function MessagesPage() {
         }
       `}</style>
     </div>
+  );
+}
+
+export default function MessagesPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
+      <MessagesContent />
+    </Suspense>
   );
 }
