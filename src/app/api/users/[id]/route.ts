@@ -39,11 +39,11 @@ export async function GET(req: NextRequest, { params }: Params) {
           select: { skill: { select: { id: true, name: true, category: true } } },
         },
         // Check connection status
-        sentRequests: {
+        sentConnections: {
           where: { receiverId: currentUserId },
           select: { status: true },
         },
-        receivedRequests: {
+        receivedConnections: {
           where: { senderId: currentUserId },
           select: { status: true },
         },
@@ -55,8 +55,8 @@ export async function GET(req: NextRequest, { params }: Params) {
     }
 
     // Determine connection status
-    const connectionFromMe = user.receivedRequests[0];
-    const connectionToMe = user.sentRequests[0];
+    const connectionFromMe = user.receivedConnections[0];
+    const connectionToMe = user.sentConnections[0];
     const isConnected =
       connectionFromMe?.status === "ACCEPTED" ||
       connectionToMe?.status === "ACCEPTED";
@@ -69,8 +69,8 @@ export async function GET(req: NextRequest, { params }: Params) {
       skills: user.skills.map((s) => s.skill),
       connectionStatus: connectionFromMe?.status ?? connectionToMe?.status ?? null,
       connectionDirection: connectionFromMe ? "received" : connectionToMe ? "sent" : null,
-      sentRequests: undefined,
-      receivedRequests: undefined,
+      sentConnections: undefined,
+      receivedConnections: undefined,
     };
 
     return NextResponse.json({ user: responseUser });
