@@ -5,6 +5,8 @@ import { LoginSchema } from "@/lib/validations";
 import bcrypt from "bcryptjs";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET || "default_fallback_secret_12345",
+  trustHost: true,
   session: { strategy: "jwt", maxAge: 7 * 24 * 60 * 60 }, // 7 days
   pages: {
     signIn: "/login",
