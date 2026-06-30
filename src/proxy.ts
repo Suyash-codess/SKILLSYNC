@@ -19,9 +19,11 @@ export default function proxy(req: NextRequest) {
   // Check for NextAuth session cookies
   const hasSecureCookie = req.cookies.has("__Secure-next-auth.session-token");
   const hasNormalCookie = req.cookies.has("next-auth.session-token");
+  const hasAuthjsSecure = req.cookies.has("__Secure-authjs.session-token");
+  const hasAuthjsNormal = req.cookies.has("authjs.session-token");
   const hasV2Cookie = req.cookies.has("skillsync-v2.session-token");
   
-  const isLoggedIn = hasSecureCookie || hasNormalCookie || hasV2Cookie;
+  const isLoggedIn = hasSecureCookie || hasNormalCookie || hasAuthjsSecure || hasAuthjsNormal || hasV2Cookie;
 
   const isProtected = protectedRoutes.some((route) => pathname.startsWith(route));
   const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route));
