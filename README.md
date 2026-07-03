@@ -82,7 +82,7 @@ src/
 │   └── ratelimit.ts          # Upstash rate limiting
 ├── components/
 │   └── Providers.tsx         # SessionProvider
-└── middleware.ts             # Auth route protection
+└── proxy.ts                  # Auth route protection (Middleware)
 ```
 
 ---
