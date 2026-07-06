@@ -140,3 +140,9 @@ Rate limits are applied per IP:
 - Auth endpoints: 5 requests / 15 minutes
 - General API: 60 requests / minute  
 - Connection requests: 10 / hour
+
+---
+
+<div align="center">
+  <b>Built with ❤️ by Suyash</b>
+</div>
