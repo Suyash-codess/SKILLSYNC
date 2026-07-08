@@ -2,6 +2,8 @@
   "name": "skillsync",
   "version": "0.1.0",
   "private": true,
+  "description": "A localized Tech-Stack Skill Barter platform for engineering students",
+  "keywords": ["nextjs", "react", "tailwindcss", "prisma", "postgresql", "hackathon"],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
