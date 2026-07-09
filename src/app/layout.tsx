@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 
+// The Outfit font provides a clean, modern aesthetic for the entire application
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
