@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+// Main configuration file for Next.js, including image domains and experimental features
 const nextConfig = {
   images: {
     remotePatterns: [
